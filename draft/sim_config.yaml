@@ -1,0 +1,30 @@
+# SimPy 시뮬레이션 설정. s4a는 이 파일이 있으면 덮어쓰지 않는다.
+# 데모용 값 (사용자 지정 2026-11-13). 실제 현장 값으로 바꾸면 그대로 다시 실행 가능.
+
+run:
+  duration_s: 28800         # 8시간
+  warmup_s: 1800            # 앞 30분은 통계에서 제외
+  seed: 1                   # 랜덤 시드 고정
+
+item:
+  length_m: 0.6             # 물품 길이
+  gap_m: 0.5                # 물품 간 최소 간격  → pitch = 1.1 m, 구간 용량 = ceil(길이 / pitch)
+
+conveyor:
+  speed_mps:
+    default: 1.0            # 전 라인 1.0 m/s
+  divert_time_s: 1.0        # 분기(직각 이송) 동작 시간 (가정값)
+  side_transfer_time_s: 1.5 # 16x4 → 16x6 측면 이송 시간 (가정값)
+  recirculate_if_blocked: true  # 목적 레인이 꽉 차면 루프를 한 바퀴 더 돈다
+
+sources:                    # 전체 시간당 1,800개를 인입 3라인에 균등 분배. 도착 간격은 지수분포
+  CV1301: {rate_per_h: 600}
+  CV1101: {rate_per_h: 600}
+  CV1201: {rate_per_h: 600}
+
+sinks:                      # 분류 목적지(레인 끝)
+  service_dist: exponential # 출구 처리 시간 분포 (exponential | constant)
+  default:
+    weight: 0.032353        # 나머지 17개 출구에 55% 균등 분배 (0.55 / 17)
+    service_s: 4.0          # 물품당 평균 4초
+  CV1633: {weight: 0.45}    # 이 출구 하나에 45% 집중 (가운데 레인 1629→1633)
