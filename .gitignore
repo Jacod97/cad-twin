@@ -1,4 +1,31 @@
+# ---- Project data / local tools ----
 data/
 tools/
-.vscode/
 assets/
+
+# ---- Generated outputs (scripts로 재생성 가능) ----
+draft/out/
+
+# ---- Omniverse ----
+# 외부 클론 저장소 (각자 .git 보유)
+omniverse/kit-app-template/
+omniverse/web-viewer-sample/
+# 캐시 / 런타임 데이터
+omniverse/packman-repo/
+omniverse/npm-cache/
+omniverse/kit-data/
+
+# ---- Logs ----
+*.log
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store
