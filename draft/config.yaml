@@ -1,0 +1,41 @@
+# 사람이 채우는 설정값. 확인 후 수정하세요.
+
+conveyor:
+  width_mm:              # 도면에 폭 없음(중심선만). 사용자 결정(2026-11-13): 메인 800 / 레인 600
+    default: 800
+    "11xx": 800
+    "12xx": 800
+    "13xx": 800
+    "14xx": 800
+    "15xx": 800
+    "16xx": 600          # 인접 레인 중심 간격 680mm
+
+interpretation:          # 도면만으로 정해지지 않아 사람이 정한 해석 (s1_analyze_dxf.py)
+  source_lines: ["11xx", "12xx", "13xx"]   # 인입 라인(외부 유입)
+  orphan_lane_side_transfer: true          # 16x6→16x7 평행 레인은 옆 레인(16x4)에서 측면 이송
+  side_transfer_max_mm: 1000
+  crossing_type: grade_separated           # 16xx 레인과 15xx 상단 루프 교차 = 입체 교차(연결 없음)
+
+assets:                  # 사용 에셋 (프로젝트 루트 기준 경로). 로컬 프레임은 s2_build_scene.py 상단 주석 참고
+  straight: assets/warehouse_conveyorBelt_a05/simready_usd/sm_warehouse_conveyorBelt_a05_01.usda
+  curve90: assets/warehouse_conveyorBelt_a02/simready_usd/sm_warehouse_conveyorBelt_a02_01.usda
+
+control_panel:           # 도면에는 평면 크기만 있음. 높이는 가정값 — 확인 필요
+  height_mm:
+    default: 1800
+    "CP500x300": 1200
+    "CP565x250": 1000
+  clear_overlap: true    # 도면상 컨베이어 위에 겹친 제어반(CP8, CP16~24 등)을 컨베이어 옆으로 밀어냄
+  clearance_mm: 50
+
+iot:
+  marker_height_mm: 1000 # IoT 표시 구 높이 (롤러 상면 769mm 위)
+  marker_radius_mm: 60
+
+grade_separation:        # 입체 교차 (사용자 결정 2026-11-13): 교차하는 16xx 구간만 높이고 앞뒤를 경사로로
+  enabled: true
+  elevated_line: "16xx"
+  roller_top_m: 2.0      # 높인 구간의 롤러 상면 높이 (바닥 기준, 기본 0.769)
+  ramp_sections_before: 2
+  ramp_sections_after: 2
+  support_spacing_m: 1.2 # 지지 기둥 간격
