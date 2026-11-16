@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CAD Twin 프로토타입 보고서</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 도면 문서처럼 좁은 본문 + 넓게 펼치는 그림. 넓은 화면에서는 왼쪽에 고정 목차. */
+:root {
+  --paper: #f3f5f6;
+  --surface: #ffffff;
+  --ink: #16212b;
+  --ink-2: #4b5966;
+  --ink-3: #6f7d89;
+  --rule: #d6dde2;
+  --accent: #0a6f7a;
+  --accent-soft: #e2f0f1;
+  --hot: #c0392b;
+  --hot-soft: #fbe9e6;
+  --bar: #8fb9be;
+  --code-bg: #e9eef1;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --text-w: 46rem;
+  --wide-w: 72rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f161c; --surface: #16212a; --ink: #e3e9ed; --ink-2: #a3b1bc; --ink-3: #7d8c98;
+    --rule: #2a3843; --accent: #5cc3cd; --accent-soft: #173238; --hot: #f0806b; --hot-soft: #3a2220;
+    --bar: #3f7178; --code-bg: #1d2a34; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f161c; --surface: #16212a; --ink: #e3e9ed; --ink-2: #a3b1bc; --ink-3: #7d8c98;
+  --rule: #2a3843; --accent: #5cc3cd; --accent-soft: #173238; --hot: #f0806b; --hot-soft: #3a2220;
+  --bar: #3f7178; --code-bg: #1d2a34; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+code { background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 3px; }
+
+/* ---------- page frame ---------- */
+.page {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 4rem;
+}
+.layout {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+@media (min-width: 1180px) {
+  .layout { grid-template-columns: 12rem minmax(0, 1fr); gap: 3rem; }
+}
+.toc { display: none; }
+@media (min-width: 1180px) {
+  .toc {
+    display: block;
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 2rem);
+    align-self: start;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding-top: 0.4rem;
+  }
+  .toc p { margin: 0 0 0.6rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+  .toc a { color: var(--ink-2); text-decoration: none; display: block; padding: 0.2rem 0 0.2rem 0.7rem; border-left: 2px solid var(--rule); }
+  .toc a:hover { color: var(--ink); border-left-color: var(--accent); }
+  .toc .step { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-3); margin-right: 0.35rem; }
+}
+main { min-width: 0; }
+
+/* ---------- header ---------- */
+.masthead {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding-block: 3.5rem 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 0.8rem; }
+.masthead h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.15; margin: 0 0 1rem; font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
+.masthead h1 span { color: var(--accent); }
+.lede { font-size: 1.15rem; line-height: 1.7; max-width: 44rem; color: var(--ink-2); margin: 0; text-wrap: pretty; }
+
+.spec {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 2rem 0 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+@media (min-width: 560px) { .spec { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .spec { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.spec div { padding: 0.8rem 1rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--surface); }
+.spec dt { font-size: 0.75rem; color: var(--ink-3); letter-spacing: 0.04em; }
+.spec dd { margin: 0.15rem 0 0; font-family: var(--font-mono); font-size: 1.15rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.spec dd small { font-size: 0.75rem; color: var(--ink-3); font-weight: 400; }
+
+/* ---------- sections ---------- */
+section { margin: 0 0 4.5rem; }
+section > .prose, .prose { max-width: var(--text-w); }
+h2 { font-size: 1.65rem; line-height: 1.35; margin: 0 0 1.2rem; font-weight: 700; text-wrap: balance; scroll-margin-top: 1.5rem; }
+h2 .step { display: block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.3rem; }
+h3 { font-size: 1.12rem; margin: 2.2rem 0 0.6rem; font-weight: 600; text-wrap: balance; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin-bottom: 0.35rem; }
+li::marker { color: var(--ink-3); }
+.note { color: var(--ink-2); font-size: 0.92rem; }
+
+.callout {
+  max-width: var(--text-w);
+  background: var(--accent-soft);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem;
+  margin: 1.5rem 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout.hot { background: var(--hot-soft); }
+.callout strong { color: var(--ink); }
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; max-width: var(--text-w); margin: 1.2rem 0 1.5rem; }
+.table-wrap.wide { max-width: none; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; line-height: 1.5; }
+th, td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; font-size: 0.8rem; color: var(--ink-3); letter-spacing: 0.03em; border-bottom-color: var(--ink-3); }
+td.mono { white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.86rem; white-space: nowrap; }
+td .swatch { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 2px; margin-right: 0.45rem; vertical-align: -0.05rem; }
+
+/* ---------- figures ---------- */
+figure { margin: 1.8rem 0 2.2rem; }
+figure.wide { max-width: none; }
+figure.text { max-width: var(--text-w); }
+.zoom {
+  display: block; width: 100%; padding: 0; border: 1px solid var(--rule); border-radius: 4px;
+  background: #fff; cursor: zoom-in; overflow: hidden;
+}
+.zoom img { width: 100%; height: auto; }
+figcaption { margin-top: 0.6rem; font-size: 0.86rem; line-height: 1.6; color: var(--ink-2); max-width: var(--text-w); }
+figcaption b { font-weight: 600; color: var(--ink); margin-right: 0.4rem; }
+figcaption code { font-size: 0.82em; }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: start; }
+@media (min-width: 860px) {
+  .split { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2.5rem; }
+  .split.flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .split figure { margin-top: 0; }
+}
+.split .prose { min-width: 0; }
+
+.trio { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin: 1.8rem 0 0.6rem; }
+@media (min-width: 720px) { .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.trio figure { margin: 0; }
+.trio figcaption { font-size: 0.8rem; margin-top: 0.4rem; }
+.trio-caption { font-size: 0.86rem; color: var(--ink-2); max-width: var(--text-w); margin: 0 0 2.2rem; }
+.trio-caption b { color: var(--ink); font-weight: 600; margin-right: 0.4rem; }
+.row-label { font-size: 0.75rem; letter-spacing: 0.06em; color: var(--ink-3); margin: 1.4rem 0 -0.6rem; }
+
+/* ---------- diagram ---------- */
+.diagram { overflow-x: auto; margin: 1.5rem 0 0.6rem; padding: 0.5rem 0; }
+.diagram svg { min-width: 900px; width: 100%; height: auto; display: block; }
+.d-node { fill: var(--surface); stroke: var(--ink-3); stroke-width: 1.2; }
+.d-node.src { fill: var(--paper); }
+.d-node.key { stroke: var(--accent); stroke-width: 1.8; }
+.d-cfg { fill: none; stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 4 3; }
+.d-title { fill: var(--ink); font-family: var(--font-body); font-size: 14px; font-weight: 600; }
+.d-step { fill: var(--accent); font-family: var(--font-mono); font-size: 11px; font-weight: 500; }
+.d-file { fill: var(--ink-2); font-family: var(--font-mono); font-size: 11.5px; }
+.d-cfgtext { fill: var(--ink-2); font-family: var(--font-mono); font-size: 11.5px; }
+.d-cfgsub { fill: var(--ink-3); font-family: var(--font-body); font-size: 11px; }
+.d-edge { fill: none; stroke: var(--ink-2); stroke-width: 1.4; }
+.d-edge.cfg { stroke: var(--ink-3); stroke-dasharray: 4 3; stroke-width: 1; }
+.d-arrow { fill: var(--ink-2); }
+.d-arrow.cfg { fill: var(--ink-3); }
+
+/* ---------- chart ---------- */
+.chart { max-width: var(--text-w); position: relative; margin: 1.5rem 0 0.4rem; }
+.chart h4 { margin: 0 0 0.2rem; font-size: 0.95rem; font-weight: 600; }
+.chart .sub { margin: 0 0 0.6rem; font-size: 0.82rem; color: var(--ink-3); }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.c-grid { stroke: var(--rule); stroke-width: 1; }
+.c-base { stroke: var(--ink-3); stroke-width: 1; }
+.c-limit { stroke: var(--hot); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.c-tick { fill: var(--ink-3); font-family: var(--font-mono); font-size: 10.5px; }
+.c-label { fill: var(--ink-2); font-family: var(--font-body); font-size: 11.5px; }
+.c-value { fill: var(--ink); font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; }
+.c-bar { fill: var(--bar); }
+.c-bar.hot { fill: var(--hot); }
+.c-hit { fill: transparent; }
+.c-g:hover .c-bar { opacity: 0.75; }
+details.data { max-width: var(--text-w); margin: 0.2rem 0 2rem; font-size: 0.86rem; color: var(--ink-2); }
+details.data summary { cursor: pointer; }
+details.data .table-wrap { margin-top: 0.6rem; }
+
+/* ---------- code ---------- */
+pre {
+  background: var(--code-bg); border-radius: 6px; padding: 1rem 1.2rem; overflow-x: auto;
+  font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.65; max-width: var(--text-w); margin: 1rem 0 1.5rem;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+pre .c { color: var(--ink-3); }
+
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 0.78rem; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--hot-soft); color: var(--hot); font-weight: 500; }
+
+footer { max-width: var(--text-w); font-size: 0.82rem; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+
+/* ---------- lightbox ---------- */
+dialog#lb {
+  border: none; padding: 0; background: var(--surface); color: var(--ink);
+  width: min(96vw, 1800px); max-width: 96vw; height: 94vh; max-height: 94vh; border-radius: 6px;
+}
+dialog#lb::backdrop { background: rgba(8, 12, 16, 0.75); }
+.lb-inner { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100%; }
+.lb-bar { display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.6rem 1rem; border-bottom: 1px solid var(--rule); font-size: 0.86rem; }
+.lb-bar p { margin: 0; color: var(--ink-2); min-width: 0; }
+.lb-bar button { font: inherit; font-size: 0.82rem; background: var(--code-bg); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.8rem; cursor: pointer; white-space: nowrap; }
+.lb-body { overflow: auto; background: #fff; }
+.lb-body img { margin: 0 auto; max-height: 100%; width: auto; max-width: 100%; object-fit: contain; cursor: zoom-in; }
+.lb-body.actual img { max-height: none; max-width: none; cursor: zoom-out; }
+
+/* ---------- print / PDF ---------- */
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --paper: #ffffff; --surface: #ffffff; --ink: #16212b; --ink-2: #4b5966; --ink-3: #6f7d89;
+    --rule: #d6dde2; --accent: #0a6f7a; --accent-soft: #e2f0f1; --hot: #c0392b; --hot-soft: #fbe9e6;
+    --bar: #8fb9be; --code-bg: #eef2f4; color-scheme: light;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 9.6pt; line-height: 1.55; background: #fff; }
+  .page { padding: 0; }
+  .layout { display: block; }
+  .toc, dialog, details.data, .print-hide { display: none !important; }
+  .masthead h1 { font-size: 21pt; }
+  .lede { font-size: 10.5pt; }
+  .eyebrow { margin-bottom: 0.4rem; }
+  .callout ul { margin-bottom: 0.5rem; }
+  .spec dd { font-size: 10pt; white-space: nowrap; }
+  section { margin-bottom: 1.6rem; }
+  #drawing, #step1, #step2, #step4, #run, .print-break { break-before: page; }
+  .masthead { padding-block: 0 0.8rem; margin-bottom: 1.1rem; }
+  .spec { grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 1.1rem; }
+  .spec div { padding: 0.45rem 0.6rem; }
+  .spec dt { font-size: 7pt; }
+  .callout { padding: 0.7rem 1rem; margin: 1rem 0; }
+  .callout li { margin-bottom: 0.1rem; }
+  .diagram { margin: 0.6rem 0 0.2rem; }
+  #step4 figure.wide .zoom img { max-height: 105mm; }
+  #step5 { margin-top: 2.2rem; }
+  h2 { font-size: 15pt; margin-bottom: 0.8rem; }
+  h3 { margin-top: 1.3rem; }
+  h2, h3 { break-after: avoid; }
+  figure, .callout, .chart, pre, tr, .trio figure { break-inside: avoid; }
+  figure { margin: 1rem 0 1.2rem; }
+  .zoom img { max-height: 215mm; width: auto; max-width: 100%; margin: 0 auto; }
+  .split { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 1.4rem; }
+  .split.flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+  .split figure { margin-top: 0; }
+  .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+  .trio-caption { margin-bottom: 1.2rem; }
+  .diagram { overflow: visible; }
+  .diagram svg { min-width: 0; width: 100%; height: 50mm; }
+  .diagram { padding: 0; }
+  .table-wrap { overflow: visible; }
+  pre { white-space: pre-wrap; overflow: visible; font-size: 7.8pt; }
+  a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <p class="eyebrow">연구 프로토타입 보고서 · 2026년 11월 14일 · 저장소 <span class="mono">cad-twin</span></p>
+  <h1>CAD 배치도에서 <span>시뮬레이션되는 디지털 트윈</span>까지</h1>
+  <p class="lede">컨베이어 분류 설비의 2D CAD 배치도 한 장을 프로그램이 읽어서 실제 크기의 3D 공장 장면과 물류 시뮬레이션 모델을 함께 만들고, 시뮬레이션 결과를 다시 3D 장면 위에 색으로 칠해 병목이 어디서 생기는지 보여주는 데모입니다.</p>
+  <dl class="spec">
+    <div><dt>도면 범위</dt><dd>28.0 × 63.4 <small>m</small></dd></div>
+    <div><dt>컨베이어 구간</dt><dd>191 <small>개</small></dd></div>
+    <div><dt>컨베이어 총길이</dt><dd>339.2 <small>m</small></dd></div>
+    <div><dt>제어반</dt><dd>24 <small>개</small></dd></div>
+    <div><dt>IoT 센서</dt><dd>167 <small>개</small></dd></div>
+    <div><dt>분류 출구</dt><dd>18 <small>개</small></dd></div>
+  </dl>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <p>목차</p>
+  <ol>
+    <li><a href="#goal">무엇을 만드는가</a></li>
+    <li><a href="#pipeline">전체 흐름</a></li>
+    <li><a href="#drawing">입력 도면</a></li>
+    <li><a href="#step1"><span class="step">1</span>도면 해석</a></li>
+    <li><a href="#step2"><span class="step">2</span>3D 장면</a></li>
+    <li><a href="#step4"><span class="step">4</span>시뮬레이션</a></li>
+    <li><a href="#step5"><span class="step">5</span>내보내기와 보기</a></li>
+    <li><a href="#limits">알려진 한계</a></li>
+    <li><a href="#run">다시 실행하기</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ 1. 목표 ============ -->
+<section id="goal">
+  <h2>무엇을 만드는가</h2>
+  <div class="prose">
+    <p>CAD 배치도에는 선, 호, 블록, 글자만 들어 있습니다. 물건이 어느 방향으로 흐르는지, 어디서 합류하고 어디서 갈라지는지, 레인이 루프와 만나는 곳이 연결인지 위로 지나가는 다리인지는 도면에 적혀 있지 않고 사람이 도면을 보고 해석해야 알 수 있습니다. 3D 모델을 만드는 사람과 시뮬레이션 모델을 만드는 사람이 이 해석을 각자 따로 다시 하는 것이 보통입니다.</p>
+    <p>이 프로젝트는 해석을 한 번만 합니다. 도면을 읽어 <strong>설비 목록과 연결 관계</strong>(<code>equipment.json</code>)를 만들고, 3D 장면과 시뮬레이션 모델을 둘 다 이 목록에서 만듭니다. 그래서 구간 이름 <code>CV1633</code>은 도면의 이름표, 3D 장면의 물체, 시뮬레이션 결과의 행에서 모두 같은 컨베이어를 가리킵니다.</p>
+  </div>
+  <div class="callout">
+    <p><strong>데모가 보여주려는 것</strong></p>
+    <ul>
+      <li>DXF 배치도에서 컨베이어 191구간, 제어반, IoT 센서를 자동으로 뽑아낸다.</li>
+      <li>뽑아낸 목록으로 실제 크기의 3D 공장 장면(USD)을 만든다. 실제 설비 3D 에셋(NVIDIA SimReady)을 도면 치수에 맞춰 배치한다.</li>
+      <li>같은 목록으로 이산 사건 시뮬레이션(SimPy)을 돌려 구간별 처리량, 대기 시간, 점유율을 계산한다.</li>
+      <li>결과를 3D 장면에 색으로 입혀 병목이 생기는 위치를 공간에서 바로 본다.</li>
+      <li>맥 미리보기(USDZ)와 브라우저(Omniverse 스트리밍)로 결과 장면을 연다.</li>
+    </ul>
+    <p>도면만으로 정해지지 않는 값(컨베이어 폭, 제어반 높이, 속도, 도착률 등)은 사람이 설정 파일 두 개에 적습니다. 값을 바꾸고 스크립트를 다시 돌리면 장면과 결과가 새로 만들어집니다.</p>
+  </div>
+</section>
+
+<!-- ============ 2. 파이프라인 ============ -->
+<section id="pipeline">
+  <h2>전체 흐름</h2>
+  <div class="prose">
+    <p>각 단계는 <code>draft/</code> 안의 스크립트 하나이고, 앞 단계가 만든 파일을 읽어 다음 파일을 씁니다. 단계 번호는 스크립트 이름의 번호를 그대로 썼습니다(3번 스크립트는 없습니다). 도면 해석 결과 하나가 3D 장면과 시뮬레이션 두 갈래로 나뉘었다가, 결과를 입히는 단계에서 다시 만납니다. 그림의 실선은 데이터 파일의 흐름, 점선은 사람이 값을 적는 설정 파일입니다.</p>
+  </div>
+  <div class="diagram" role="img" aria-label="파이프라인: CAD 배치도에서 Step 1 도면 해석으로 equipment.json을 만들고, 이것이 Step 2 3D 장면과 Step 4a·4b 시뮬레이션으로 나뉜 뒤 Step 4c에서 결과 색 장면으로 합쳐지고 Step 5에서 USDZ와 Omniverse로 보여진다. config.yaml은 Step 1과 2에, sim_config.yaml은 Step 4에 들어간다.">
+    <svg viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="d-arrow" d="M0,0 L10,5 L0,10 z"/></marker>
+        <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="d-arrow cfg" d="M0,0 L10,5 L0,10 z"/></marker>
+      </defs>
+      <!-- config inputs -->
+      <rect class="d-cfg" x="180" y="12" width="170" height="48" rx="5"/>
+      <text class="d-cfgtext" x="194" y="33">config.yaml</text>
+      <text class="d-cfgsub" x="194" y="50">폭 · 해석 규칙 · 에셋 · 높이</text>
+      <rect class="d-cfg" x="180" y="268" width="170" height="48" rx="5"/>
+      <text class="d-cfgtext" x="194" y="289">sim_config.yaml</text>
+      <text class="d-cfgsub" x="194" y="306">속도 · 도착률 · 목적지 비율</text>
+      <path class="d-edge cfg" d="M265,60 L265,133" marker-end="url(#ahc)"/>
+      <path class="d-edge cfg" d="M350,36 C375,36 378,60 398,66" marker-end="url(#ahc)"/>
+      <path class="d-edge cfg" d="M350,292 C372,292 380,276 398,272" marker-end="url(#ahc)"/>
+      <!-- nodes -->
+      <rect class="d-node src" x="10" y="135" width="130" height="64" rx="6"/>
+      <text class="d-title" x="24" y="162">CAD 배치도</text>
+      <text class="d-file" x="24" y="183">.dxf · 선과 블록</text>
+
+      <rect class="d-node key" x="180" y="135" width="170" height="64" rx="6"/>
+      <text class="d-step" x="194" y="154">STEP 1</text>
+      <text class="d-title" x="194" y="172">도면 해석</text>
+      <text class="d-file" x="194" y="189">equipment.json</text>
+
+      <rect class="d-node" x="400" y="40" width="180" height="64" rx="6"/>
+      <text class="d-step" x="414" y="59">STEP 2</text>
+      <text class="d-title" x="414" y="77">3D 장면 만들기</text>
+      <text class="d-file" x="414" y="94">factory.usda</text>
+
+      <rect class="d-node" x="400" y="230" width="180" height="64" rx="6"/>
+      <text class="d-step" x="414" y="249">STEP 4a · 4b</text>
+      <text class="d-title" x="414" y="267">시뮬레이션</text>
+      <text class="d-file" x="414" y="284">sim_results.json</text>
+
+      <rect class="d-node" x="630" y="135" width="170" height="64" rx="6"/>
+      <text class="d-step" x="644" y="154">STEP 4c</text>
+      <text class="d-title" x="644" y="172">결과를 장면에 입히기</text>
+      <text class="d-file" x="644" y="189">factory_sim.usda</text>
+
+      <rect class="d-node" x="840" y="135" width="150" height="64" rx="6"/>
+      <text class="d-step" x="854" y="154">STEP 5</text>
+      <text class="d-title" x="854" y="172">내보내기 · 보기</text>
+      <text class="d-file" x="854" y="189">.usdz · Omniverse</text>
+      <!-- edges -->
+      <path class="d-edge" d="M140,167 L178,167" marker-end="url(#ah)"/>
+      <path class="d-edge" d="M350,152 C378,152 372,86 398,82" marker-end="url(#ah)"/>
+      <path class="d-edge" d="M350,182 C378,182 372,248 398,252" marker-end="url(#ah)"/>
+      <path class="d-edge" d="M580,72 C610,72 604,150 628,154" marker-end="url(#ah)"/>
+      <path class="d-edge" d="M580,262 C610,262 604,184 628,180" marker-end="url(#ah)"/>
+      <path class="d-edge" d="M800,167 L838,167" marker-end="url(#ah)"/>
+    </svg>
+  </div>
+  <p class="note prose print-hide">좁은 화면에서는 그림을 옆으로 밀어 볼 수 있습니다.</p>
+</section>
+
+<!-- ============ 3. 입력 도면 ============ -->
+<section id="drawing">
+  <h2>입력 도면</h2>
+  <div class="split">
+    <div class="prose">
+      <p>입력은 공개 샘플 도면 <code>conveyor-system-sorting-lane-plan-with-control-points</code>(DWG 원본과 DXF 변환본, <code>data/</code>)입니다. 물품이 세 줄의 인입 라인으로 들어와 하나의 메인 라인으로 합쳐지고, 재순환 루프를 돌다가 아홉 개의 분류 레인 중 하나로 빠지는 분류 설비입니다.</p>
+      <h3>도면에 들어 있는 것</h3>
+      <ul>
+        <li><strong>컨베이어 중심선</strong>: 레이어 0의 LINE과 ARC. 폭 정보는 없습니다.</li>
+        <li><strong>구간 경계</strong>: 중심선에 직각으로 그은 200 mm 짧은 선.</li>
+        <li><strong>구간 이름표</strong>: 블록 <code>name</code>의 TAGNUMBER 191개. 구간 191개와 1:1로 대응합니다.</li>
+        <li><strong>IoT 센서</strong>: 블록 <code>IOT</code>. 구간마다 하나씩 놓인 점입니다.</li>
+        <li><strong>제어반</strong>: 블록 <code>CP…</code>(사각형 외곽과 문 열림 호)와 글자 <code>CPn</code>.</li>
+      </ul>
+      <h3>라인 구성</h3>
+      <p>이름표의 앞 두 자리가 라인을 나타냅니다. 흐름 방향은 같은 라인 안에서 번호가 커지는 방향으로 해석했습니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>라인</th><th>역할</th><th class="num">구간</th><th class="num">길이</th><th class="num">폭</th></tr></thead>
+          <tbody>
+            <tr><td class="mono"><span class="swatch" style="background:#8bb6d8"></span>11xx</td><td>인입 라인 1</td><td class="num">25</td><td class="num">51.0 m</td><td class="num">800</td></tr>
+            <tr><td class="mono"><span class="swatch" style="background:#93cf93"></span>12xx</td><td>인입 라인 2</td><td class="num">25</td><td class="num">51.0 m</td><td class="num">800</td></tr>
+            <tr><td class="mono"><span class="swatch" style="background:#c9b3de"></span>13xx</td><td>인입 라인 3</td><td class="num">24</td><td class="num">50.3 m</td><td class="num">800</td></tr>
+            <tr><td class="mono"><span class="swatch" style="background:#fbbf80"></span>14xx</td><td>메인 라인. 11xx·12xx가 30° 사선으로 합류</td><td class="num">17</td><td class="num">30.4 m</td><td class="num">800</td></tr>
+            <tr><td class="mono"><span class="swatch" style="background:#8fdbe6"></span>15xx</td><td>재순환 루프</td><td class="num">37</td><td class="num">50.4 m</td><td class="num">800</td></tr>
+            <tr><td class="mono"><span class="swatch" style="background:#c9a9a3"></span>16xx</td><td>분류 레인 9개, 출구 18개</td><td class="num">63</td><td class="num">106.0 m</td><td class="num">600</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">폭(mm)은 도면에 없어서 사람이 정한 값입니다. 메인 계열 800 mm, 분류 레인 600 mm(인접 레인 중심 간격 680 mm). 색은 오른쪽 그림의 라인 색과 같습니다.</p>
+    </div>
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 1 크게 보기"><img src="images/s1_plan_overall.png" alt="원본 도면 위에 추출한 컨베이어, 제어반, IoT 센서를 라인별 색으로 겹친 전체 배치도" width="1600" height="3707" loading="lazy"></button>
+      <figcaption><b>그림 1</b>원본 도면(회색 선) 위에 Step 1이 뽑아낸 설비를 겹친 전체 배치. 아래쪽 긴 세 줄이 인입 라인, 위쪽이 메인 라인·재순환 루프·분류 레인입니다.<span class="print-hide"> 그림을 누르면 크게 볼 수 있습니다.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 4. Step 1 ============ -->
+<section id="step1">
+  <h2><span class="step">STEP 1 · s1_analyze_dxf.py, s1_plot_plan.py</span>도면 해석: 선과 블록을 설비 목록으로</h2>
+  <div class="prose">
+    <p>중심선을 구간 경계선에서 잘라 구간을 만들고, 각 구간에 가장 가까운 이름표를 붙입니다. 구간끼리 끝점이 닿는 곳, T자로 만나는 곳, 사선으로 붙는 곳을 찾아 연결 관계를 만들고, 제어반과 IoT 센서는 가장 가까운 구간에 배정합니다. 결과는 <code>out/equipment.json</code> 하나에 담깁니다.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>연결 종류</th><th class="num">개수</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td>직렬 연결</td><td class="num">170</td><td>같은 라인에서 다음 구간으로 그대로 이어짐</td></tr>
+        <tr><td>합류</td><td class="num">3</td><td>인입 라인이 메인 라인으로, 메인 라인이 루프로 들어가는 곳</td></tr>
+        <tr><td>분기</td><td class="num">9</td><td>루프 아래쪽에서 각 분류 레인으로 직각 이송</td></tr>
+        <tr><td>측면 이송</td><td class="num">9</td><td>분류 레인 16x4에서 옆의 평행 레인 16x6으로 옮김</td></tr>
+        <tr><td>입체 교차</td><td class="num">9</td><td>분류 레인이 루프 위쪽을 지나감. 흐름 연결 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>도면만으로 정해지지 않아 사람이 정한 해석</h3>
+  <div class="prose">
+    <p>아래 네 가지는 도면을 아무리 봐도 답이 하나로 나오지 않아서 사람이 결정했고, <code>config.yaml</code>의 <code>interpretation</code> 항목에 적혀 있습니다.</p>
+    <ul>
+      <li><strong>교차는 입체 교차.</strong> 16xx 레인은 15xx 루프 위쪽을 접합 표시 없이 가로지릅니다. 물품이 여기서 섞이지 않는다고 보고, 레인이 루프 위로 지나가는 다리로 처리했습니다.</li>
+      <li><strong>평행 레인은 측면 이송.</strong> 각 레인 옆의 짧은 평행 레인(16x6–16x7)은 어디에도 이어져 있지 않습니다. 옆 레인의 16x4 구간에서 옆으로 밀어 넣는 것으로 해석했습니다.</li>
+      <li><strong>흐름 방향은 번호 증가 방향.</strong> 도면에 화살표가 없어서 이름표 번호가 커지는 쪽으로 흐른다고 봤습니다.</li>
+      <li><strong>100 mm 어긋남은 작도 오차.</strong> 16xx 레인 중간에 중심선이 100 mm 어긋난 곳이 있는데, 실제 설계가 아니라 그릴 때의 오차로 보고 이어 붙였습니다.</li>
+    </ul>
+  </div>
+  <figure class="wide">
+    <button class="zoom" type="button" aria-label="그림 2 크게 보기"><img src="images/s1_plan_zoom_loop.png" alt="메인 라인, 재순환 루프, 분류 레인 부분을 확대한 추출 결과. 합류는 빨강, 분기는 분홍, 측면 이송은 검은 화살표" width="3200" height="1680" loading="lazy"></button>
+    <figcaption><b>그림 2</b>메인 라인(주황), 재순환 루프(하늘색), 분류 레인(갈색) 확대. 빨간 화살표가 합류, 분홍 화살표가 루프 아래쪽에서 레인으로 빠지는 분기, 검은 화살표가 평행 레인으로의 측면 이송입니다. 레인이 루프 위쪽과 겹치는 회색 부분이 입체 교차 지점입니다.</figcaption>
+  </figure>
+  <figure class="text">
+    <button class="zoom" type="button" aria-label="그림 3 크게 보기"><img src="images/s1_plan_zoom_infeed.png" alt="인입 라인 세 줄의 시작 부분 확대. 구간마다 이름표와 IoT 센서가 하나씩 있다" width="2400" height="1540" loading="lazy"></button>
+    <figcaption><b>그림 3</b>인입 라인 11xx·12xx·13xx의 시작 부분. 구간마다 이름표(타원)와 IoT 센서(노란 점)가 하나씩 붙어 있고, 화살표가 해석한 흐름 방향입니다.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 5. Step 2 ============ -->
+<section id="step2">
+  <h2><span class="step">STEP 2 · s2_build_scene.py, s2_render.py</span>3D 장면: 설비 목록을 실제 크기의 공장으로</h2>
+  <div class="prose">
+    <p>설비 목록의 구간마다 실제 컨베이어 3D 에셋을 하나씩 놓아 USD 장면 <code>out/scene/factory.usda</code>를 만듭니다. 좌표는 도면 좌표(mm)에서 원점을 빼고 1000으로 나눈 미터 단위이고, 위쪽이 Z축입니다.</p>
+    <h3>배치 규칙</h3>
+    <ul>
+      <li><strong>직선 구간</strong>: NVIDIA SimReady 에셋 <code>warehouse_conveyorBelt_a05</code>(길이 2.0 m, 프레임 폭 1.15 m, 롤러 상면 0.769 m)를 시작점에 놓고 진행 방향으로 돌린 뒤, 길이와 폭을 구간 치수에 맞게 늘이거나 줄입니다.</li>
+      <li><strong>90° 곡선</strong>: 에셋 <code>warehouse_conveyorBelt_a02</code>를 곡률 반지름 비율로 균일하게 키웁니다. 왼쪽으로 도는 곡선은 오른쪽 곡선을 끝점에서 거꾸로 놓아 만듭니다.</li>
+      <li><strong>60° 곡선</strong>: 맞는 에셋이 없어서 같은 규약의 단순 곡선판을 프로그램으로 만들었습니다.</li>
+      <li><strong>합류·분기 접합부</strong>: 상대 컨베이어 폭의 절반만큼 직선 끝을 잘라 서로 겹치지 않게 합니다.</li>
+      <li><strong>입체 교차</strong>: 교차하는 16x3 구간의 롤러 상면을 2.0 m로 올리고, 앞뒤 두 구간씩을 경사로로 만들어 연결하고, 1.2 m 간격으로 지지 기둥을 세웁니다.</li>
+      <li><strong>제어반</strong>: 도면의 평면 크기대로 상자를 만들고 문 쪽 면을 표시합니다. 높이는 도면에 없어서 1.8 m(작은 것은 1.2 m, 1.0 m)로 가정했습니다. 컨베이어와 겹치게 그려진 제어반(CP8, CP16–CP24 등)은 옆으로 밀어 두고 옮긴 거리를 기록했습니다.</li>
+      <li><strong>IoT 센서</strong>: 바닥에서 1.0 m 높이의 작은 구로 표시합니다.</li>
+    </ul>
+    <h3>장면 안에 남기는 정보</h3>
+    <p>각 컨베이어는 <code>/World/Conveyors/L16xx/CV1633</code>처럼 라인별로 묶이고, 이름표 번호, 라인, 종류, 길이, 폭, 위·아래 구간, 교차 상대, 원래 도면 좌표를 <code>cadtwin:*</code> 속성으로 함께 갖습니다. 3D 장면만 열어도 각 물체가 도면의 어느 구간인지 알 수 있습니다. 같은 에셋은 한 번만 읽고 재사용(instanceable reference)하므로 직선 182구간이 메시 하나로 그려집니다.</p>
+  </div>
+
+  <div class="split flip">
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 4 크게 보기"><img src="images/s2_top_overlay.png" alt="3D 장면을 위에서 내려다본 렌더 위에 원본 도면 선을 빨강으로 겹친 전체 그림" width="1118" height="2575" loading="lazy"></button>
+      <figcaption><b>그림 4</b>3D 장면을 위에서 똑바로 내려다본 렌더에 원본 도면 선(빨강)을 겹친 전체 그림.</figcaption>
+    </figure>
+    <div class="prose">
+      <h3>도면과 맞는지 확인하는 방법</h3>
+      <p>3D 장면을 위에서 원근 없이 렌더한 뒤 원본 도면 선을 빨간색으로 겹칩니다. 빨간 중심선이 렌더된 컨베이어 가운데를 지나고, 빨간 제어반 외곽이 회색 상자와 겹치면 배치가 도면과 맞는 것입니다. 화면이 없는 서버에서 GPU로 직접 렌더해서(pyrender, EGL) PNG로 확인했습니다.</p>
+      <figure>
+        <button class="zoom" type="button" aria-label="그림 5 크게 보기"><img src="images/s2_top_overlay_merge.png" alt="인입 라인 11xx가 메인 라인으로 사선 합류하는 부분의 렌더와 도면 선 겹침" width="1650" height="1140" loading="lazy"></button>
+        <figcaption><b>그림 5</b>11xx 인입 라인이 메인 라인으로 30° 사선 합류하는 곳. 합류 끝을 잘라 두 컨베이어가 겹치지 않습니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <figure class="wide">
+    <button class="zoom" type="button" aria-label="그림 6 크게 보기"><img src="images/s2_top_overlay_loop.png" alt="재순환 루프와 분류 레인 부분의 렌더 위에 도면 선을 겹친 확대 그림" width="2520" height="1390" loading="lazy"></button>
+    <figcaption><b>그림 6</b>재순환 루프와 분류 레인 부분의 겹침 확인. 레인과 루프 위쪽이 겹치는 곳이 입체 교차 지점이고, 3D에서는 레인이 루프 위로 지나갑니다(그림 7 가운데).</figcaption>
+  </figure>
+
+  <div class="trio">
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 7a 크게 보기"><img src="images/s2_view_overview.png" alt="공장 전체를 비스듬히 내려다본 3D 렌더" width="1800" height="1100" loading="lazy"></button>
+      <figcaption>전체</figcaption>
+    </figure>
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 7b 크게 보기"><img src="images/s2_view_crossing.png" alt="분류 레인이 경사로로 올라가 루프 위를 지나는 입체 교차 부분의 3D 렌더" width="1800" height="1100" loading="lazy"></button>
+      <figcaption>입체 교차</figcaption>
+    </figure>
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 7c 크게 보기"><img src="images/s2_view_sortlanes.png" alt="분류 레인 아홉 개와 제어반을 비스듬히 본 3D 렌더" width="1800" height="1100" loading="lazy"></button>
+      <figcaption>분류 레인</figcaption>
+    </figure>
+  </div>
+  <p class="trio-caption"><b>그림 7</b>완성된 3D 장면. 가운데 그림에서 분류 레인이 경사로를 타고 2.0 m 높이로 올라가 루프 위를 지나고, 지지 기둥이 받치는 모습을 볼 수 있습니다. 회색 상자는 제어반, 노란 점은 IoT 센서입니다.</p>
+</section>
+
+<!-- ============ 6. Step 4 ============ -->
+<section id="step4">
+  <h2><span class="step">STEP 4 · s4a_build_sim_model.py, s4b_run_sim.py, s4c_color_scene.py</span>시뮬레이션: 같은 목록으로 물류 흐름 계산</h2>
+  <div class="prose">
+    <p>Step 1의 연결 관계를 그대로 시뮬레이션 그래프로 옮깁니다(<code>out/sim_model.json</code>). 구간 191개가 노드, 연결 191개가 간선이고, 인입 3곳과 출구 18곳이 있습니다. 루프는 37구간짜리 순환 하나이고, 인입에서 가지 못하는 출구는 없는 것을 확인했습니다. 이 그래프에 <code>sim_config.yaml</code>의 값을 넣어 SimPy로 실행합니다.</p>
+    <h3>모델 규칙</h3>
+    <ul>
+      <li>구간 하나는 물품이 쌓일 수 있는 칸입니다. 담을 수 있는 개수는 구간 길이를 물품 간격(1.1 m)으로 나눠 올림한 값이고, 통과 시간은 길이 ÷ 속도입니다.</li>
+      <li>다음 구간에 자리가 날 때까지 지금 구간의 자리를 붙잡고 기다립니다. 그래서 한 곳이 막히면 정체가 뒤로 번집니다.</li>
+      <li>합류 지점에서는 먼저 온 물품이 먼저 들어갑니다. 분기에는 1.0초, 측면 이송에는 1.5초의 동작 시간이 더 걸립니다.</li>
+      <li>물품은 목적지까지 최단 경로로 갑니다. 목적 레인이 꽉 차 있으면 루프를 한 바퀴 더 돕니다.</li>
+      <li>출구에서는 물품을 하나씩 처리합니다(평균 4초, 지수분포).</li>
+    </ul>
+  </div>
+
+  <h3>데모 시나리오</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>값</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>실행 시간</td><td class="mono">8시간</td><td>처음 30분은 통계에서 제외, 난수 시드 고정</td></tr>
+        <tr><td>컨베이어 속도</td><td class="mono">1.0 m/s</td><td>모든 라인 같음</td></tr>
+        <tr><td>물품</td><td class="mono">길이 0.6 m + 간격 0.5 m</td><td>라인 하나가 낼 수 있는 최대 흐름은 시간당 약 3,270개</td></tr>
+        <tr><td>들어오는 양</td><td class="mono">시간당 1,800개</td><td>인입 라인 3곳에 600개씩, 도착 간격은 지수분포</td></tr>
+        <tr><td>목적지</td><td class="mono">CV1633에 45%</td><td>나머지 17개 출구에 55%를 고르게 나눔(출구당 약 3.2%)</td></tr>
+        <tr><td>출구 처리</td><td class="mono">평균 4초</td><td>지수분포</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note prose">모든 값은 데모용 가정값입니다. 특히 한 출구에 45%를 몰아 준 것은 병목이 생기는 모습과 그것을 찾아내는 과정을 보여주기 위한 설정입니다. 현장 값으로 바꾸면 같은 스크립트로 다시 계산됩니다.</p>
+
+  <h3 class="print-break">결과</h3>
+  <div class="split">
+    <div class="prose">
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td>처리 완료</td><td class="num">시간당 1,783.5개</td></tr>
+            <tr><td>들어온 양</td><td class="num">시간당 1,800개</td></tr>
+            <tr><td>평균 체류 시간</td><td class="num">155.6초</td></tr>
+            <tr><td>가장 긴 체류 시간</td><td class="num">879.9초</td></tr>
+            <tr><td>루프를 한 바퀴 더 돈 횟수</td><td class="num">3,058회</td></tr>
+            <tr><td>인입 라인 평균 대기</td><td class="num">0.13초</td></tr>
+            <tr><td>병목</td><td class="num"><span class="pill">CV1633</span></td></tr>
+            <tr><td>정체 구간(평균 대기 5초 이상)</td><td class="num"><span class="pill">CV1632</span> 5.53초</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>설비 전체로 보면 들어온 물품의 99%를 처리했고 인입 라인에서는 거의 기다리지 않습니다. 문제는 가운데 레인 한 곳에 몰려 있습니다.</p>
+      <div class="callout hot">
+        <p><strong>병목이 CV1633에서 생기는 이유</strong></p>
+        <p>CV1633은 전체의 45%, 시간당 약 810개를 받습니다. 출구가 물품 하나를 평균 4초에 처리하므로 이 출구가 감당할 수 있는 최대량은 시간당 900개이고, 부하율이 약 90%가 됩니다(측정 점유율 0.915, 처리 805개/h). 처리 시간이 들쭉날쭉하기 때문에 출구 앞에 줄이 생기고, 그 줄이 레인을 따라 CV1632 → CV1631 → CV1630 → CV1629로 번집니다(평균 대기 5.5초 → 3.8초).</p>
+        <p>레인이 가득 차면 CV1633으로 가야 할 물품이 루프를 한 바퀴 더 돕니다. 7.5시간 동안 3,058회, 시간당 약 408회이고, 루프를 닫는 구간 CV1537의 처리량(시간당 407.9개)과 같습니다. 체류 시간이 길게는 880초까지 늘어나는 것도 이 때문입니다.</p>
+      </div>
+    </div>
+    <figure>
+      <button class="zoom" type="button" aria-label="그림 8 크게 보기"><img src="images/s4_map_metrics.png" alt="루프와 분류 레인 영역의 처리량, 평균 대기 시간, 점유율 지도 세 장. 가운데 레인이 빨갛게 표시됨" width="1430" height="2420" loading="lazy"></button>
+      <figcaption><b>그림 8</b>구간별 처리량(위), 다음 구간에 들어가기까지의 평균 대기(가운데), 점유율(아래). 대기와 점유율은 초록에서 빨강으로 갈수록 나쁩니다. 가운데 레인(1629–1633)만 빨갛고, 루프 위쪽은 점유율이 0.6–0.7로 붐비지만 대기는 1초 미만입니다.</figcaption>
+    </figure>
+  </div>
+
+  <div class="chart" id="sinkChart">
+    <h4>출구별 처리량</h4>
+    <p class="sub">시간당 개수, 출구 18곳. 점선은 평균 4초 처리 기준 출구 하나의 최대량(시간당 900개)</p>
+    <!--SINK_CHART-->
+  </div>
+  <details class="data">
+    <summary>표로 보기</summary>
+    <div class="table-wrap"><table id="sinkTable"><thead><tr><th>출구</th><th class="num">처리량(개/h)</th><th class="num">점유율</th></tr></thead><tbody><!--SINK_ROWS--></tbody></table></div>
+  </details>
+
+  <figure class="wide">
+    <button class="zoom" type="button" aria-label="그림 9 크게 보기"><img src="images/s4_top_utilization.png" alt="3D 장면을 위에서 본 렌더에 구간별 점유율 색을 입힌 그림" width="1752" height="1197" loading="lazy"></button>
+    <figcaption><b>그림 9</b>결과를 입힌 3D 장면(<code>factory_sim.usda</code>)을 위에서 본 모습. 각 컨베이어 롤러 위에 점유율 색 띠를 올리고, 병목과 정체 구간은 빨강으로 고정했습니다. 원래 장면 파일은 그대로 두고 그 위에 겹치는 층(sublayer)으로 색과 <code>sim:*</code> 속성을 더했습니다.</figcaption>
+  </figure>
+
+  <div class="trio">
+    <figure><button class="zoom" type="button" aria-label="Step 4 전체 장면 크게 보기"><img src="images/s4_view_overview.png" alt="점유율 색을 입힌 전체 장면" width="1800" height="1100" loading="lazy"></button></figure>
+    <figure><button class="zoom" type="button" aria-label="Step 4 입체 교차 장면 크게 보기"><img src="images/s4_view_crossing.png" alt="점유율 색을 입힌 입체 교차 장면. 병목 위치에 빨간 기둥" width="1800" height="1100" loading="lazy"></button></figure>
+    <figure><button class="zoom" type="button" aria-label="Step 4 분류 레인 장면 크게 보기"><img src="images/s4_view_sortlanes.png" alt="점유율 색을 입힌 분류 레인 장면. 가운데 레인 끝에 빨간 기둥" width="1800" height="1100" loading="lazy"></button></figure>
+  </div>
+  <p class="trio-caption"><b>그림 10</b>그림 7과 같은 카메라 위치에서 본 결과 장면. 분류 레인 끝에 세운 빨간 기둥이 병목 CV1633의 위치이고, 초록 레인 사이로 주황색 레인 하나가 루프를 넘어가는 것이 보입니다.</p>
+</section>
+
+<!-- ============ 7. Step 5 ============ -->
+<section id="step5">
+  <h2><span class="step">STEP 5 · s5_export_usdz.py, omniverse/</span>내보내기와 보기</h2>
+  <div class="prose">
+    <p>서버에는 화면이 없어서 결과 장면을 보는 방법을 두 가지로 만들었습니다.</p>
+    <h3>맥 미리보기용 USDZ 파일</h3>
+    <p>결과 장면을 맥 Finder에서 스페이스바로 바로 열 수 있는 <code>.usdz</code> 한 파일로 묶습니다. 맥의 Quick Look이 읽을 수 있도록 상자·구 같은 도형을 메시로 바꾸고, 색을 Quick Look이 이해하는 재질(UsdPreviewSurface)로 옮기고, 텍스처를 1024 px JPEG로 줄이고, 위쪽 축을 Z에서 Y로 돌립니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>파일</th><th class="num">크기</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">factory_sim_full.usdz</td><td class="num">19.3 MB</td><td>SimReady 에셋 형상 그대로. 컨베이어 한 구간이 약 21만 삼각형이라 재사용을 지원하지 않는 뷰어에서는 무겁습니다.</td></tr>
+          <tr><td class="mono">factory_sim_lite.usdz</td><td class="num">0.48 MB</td><td>컨베이어를 회색 판과 다리로 단순화. 결과 색 띠, 제어반, 지지 기둥, IoT 표시는 같습니다.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>브라우저에서 보는 Omniverse 스트리밍</h3>
+    <p>NVIDIA Omniverse Kit 106.0.3으로 만든 뷰어 앱(<code>cadtwin.viewer_streaming</code>)이 서버 GPU에서 <code>factory_sim.usda</code>를 렌더하고, NVIDIA의 <code>web-viewer-sample</code>로 만든 웹 페이지(포트 5173)가 그 화면을 브라우저로 받아 보여줍니다. 실행과 종료는 <code>omniverse/</code>의 스크립트 세 개로 합니다.</p>
+  </div>
+</section>
+
+<!-- ============ 8. 한계 ============ -->
+<section id="limits">
+  <h2>알려진 한계</h2>
+  <div class="prose">
+    <h3>3D 장면</h3>
+    <ul>
+      <li>곡선 에셋은 가로세로를 같은 비율로만 키울 수 있어서 폭을 따로 맞추지 못합니다. 반지름 1040 mm에서 폭이 우연히 0.80 m로 맞았습니다. 60° 곡선은 단순 곡선판입니다.</li>
+      <li>715–930 mm의 짧은 구간은 2 m 직선 에셋을 길이 방향으로 많이 줄여서 롤러가 촘촘해 보입니다.</li>
+      <li>경사로의 최대 기울기는 약 23°입니다(두 구간으로 1.23 m를 오르내림). 기울인 에셋은 다리까지 함께 기울어 보입니다.</li>
+      <li>제어반 높이는 도면에 없는 가정값이라 현장 확인이 필요합니다.</li>
+    </ul>
+    <h3>시뮬레이션</h3>
+    <ul>
+      <li>구간을 물품이 쌓이는 칸으로만 봅니다. 가속과 감속, 물품마다 다른 크기, 실제 제어 로직(분기 판단, 우선순위)은 들어 있지 않습니다.</li>
+      <li>속도, 도착률, 목적지 비율, 처리 시간은 모두 데모용 가정값입니다. 결과 숫자는 이 설비의 실제 성능이 아니라 파이프라인이 동작하는 방식을 보여줍니다.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 9. 실행 ============ -->
+<section id="run">
+  <h2>다시 실행하기</h2>
+  <div class="prose">
+    <p>conda 환경 <code>torch_render</code>에서 실행합니다(추가 설치: matplotlib, simpy, pyrender, PyOpenGL, trimesh). 스크립트는 순서대로 돌리면 되고, 모든 결과는 <code>draft/out/</code>에 다시 만들어집니다.</p>
+  </div>
+<pre><code>PY=/disk2/jaesik/miniconda3/envs/torch_render/bin/python
+cd draft
+$PY s1_analyze_dxf.py        <span class="c"># DXF → out/equipment.json</span>
+$PY s1_plot_plan.py          <span class="c"># → out/s1_plan_*.png</span>
+$PY s2_build_scene.py        <span class="c"># → out/scene/factory.usda</span>
+$PY s2_render.py             <span class="c"># → out/s2_*.png</span>
+$PY s4a_build_sim_model.py   <span class="c"># → out/sim_model.json (+ sim_config.yaml, 없을 때만)</span>
+$PY s4b_run_sim.py           <span class="c"># → out/sim_results.json, .csv</span>
+$PY s4c_color_scene.py       <span class="c"># → out/scene/factory_sim.usda, out/s4_*.png</span>
+$PY s5_export_usdz.py both   <span class="c"># → out/factory_sim_full.usdz, factory_sim_lite.usdz</span></code></pre>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>사람이 고치는 파일</th><th>들어 있는 값</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">draft/config.yaml</td><td>컨베이어 폭, 도면 해석 규칙(입체 교차, 측면 이송), 에셋 경로, 제어반 높이, IoT 표시, 입체 교차 높이와 경사로 길이</td></tr>
+        <tr><td class="mono">draft/sim_config.yaml</td><td>실행 시간, 속도, 물품 길이와 간격, 분기·측면 이송 시간, 인입 도착률, 목적지 비율, 출구 처리 시간</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>이 보고서의 숫자는 <code>draft/out/equipment.json</code>, <code>sim_model.json</code>, <code>sim_results.json</code>과 두 설정 파일에서 가져왔습니다. 그림과 출구별 처리량 그래프는 <code>python3 report/build_report.py</code>가 <code>draft/out/</code>에서 읽어 이 파일 안에 직접 넣습니다. 스크립트를 다시 돌린 뒤 이 명령을 실행하면 HTML과 PDF가 함께 새로 만들어집니다.</p>
+</footer>
+
+</main>
+</div>
+</div>
+
+<dialog id="lb" aria-label="그림 크게 보기">
+  <div class="lb-inner">
+    <div class="lb-bar">
+      <p id="lbCap"></p>
+      <div style="display:flex; gap:0.5rem;">
+        <button type="button" id="lbSize">원래 크기</button>
+        <button type="button" id="lbClose">닫기</button>
+      </div>
+    </div>
+    <div class="lb-body" id="lbBody"><img id="lbImg" alt=""></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  /* ---------- 그림 크게 보기 ---------- */
+  var lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"),
+      lbCap = document.getElementById("lbCap"), lbBody = document.getElementById("lbBody"),
+      lbSize = document.getElementById("lbSize");
+  function setActual(on) { lbBody.classList.toggle("actual", on); lbSize.textContent = on ? "화면에 맞추기" : "원래 크기"; }
+  document.querySelectorAll(".zoom").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var img = btn.querySelector("img");
+      var cap = btn.closest("figure").querySelector("figcaption");
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      lbCap.textContent = cap ? cap.textContent : img.alt;
+      setActual(false);
+      if (lb.showModal) lb.showModal(); else window.open(img.src, "_blank");
+    });
+  });
+  lbSize.addEventListener("click", function () { setActual(!lbBody.classList.contains("actual")); });
+  lbImg.addEventListener("click", function () { setActual(!lbBody.classList.contains("actual")); });
+  document.getElementById("lbClose").addEventListener("click", function () { lb.close(); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2413 @@
+{
+ "nodes": [
+  {
+   "id": "CV1537",
+   "line": "15xx",
+   "length_m": 1.2437,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1536",
+   "line": "15xx",
+   "length_m": 1.0891,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1535",
+   "line": "15xx",
+   "length_m": 1.62,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1534",
+   "line": "15xx",
+   "length_m": 1.6336,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1533",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1532",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1531",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1530",
+   "line": "15xx",
+   "length_m": 1.025,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1529",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1528",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1527",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1526",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1525",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1524",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1523",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1522",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1521",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1520",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1519",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1518",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1517",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1516",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1515",
+   "line": "15xx",
+   "length_m": 0.93,
+   "kind": "straight",
+   "role": "divert"
+  },
+  {
+   "id": "CV1514",
+   "line": "15xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1513",
+   "line": "15xx",
+   "length_m": 1.6336,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1512",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1511",
+   "line": "15xx",
+   "length_m": 1.6336,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1510",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1509",
+   "line": "15xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1508",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1507",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1506",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1505",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1504",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1503",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1502",
+   "line": "15xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1501",
+   "line": "15xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "merge"
+  },
+  {
+   "id": "CV1417",
+   "line": "14xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1416",
+   "line": "14xx",
+   "length_m": 1.6136,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1415",
+   "line": "14xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1414",
+   "line": "14xx",
+   "length_m": 2.1136,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1413",
+   "line": "14xx",
+   "length_m": 1.6336,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1412",
+   "line": "14xx",
+   "length_m": 0.715,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1411",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1410",
+   "line": "14xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "merge"
+  },
+  {
+   "id": "CV1409",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1408",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1407",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1406",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1405",
+   "line": "14xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "merge"
+  },
+  {
+   "id": "CV1404",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1403",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1402",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1401",
+   "line": "14xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1324",
+   "line": "13xx",
+   "length_m": 1.6336,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1323",
+   "line": "13xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1322",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1321",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1320",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1319",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1318",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1317",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1316",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1315",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1314",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1313",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1312",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1311",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1310",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1309",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1308",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1307",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1306",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1305",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1304",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1303",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1302",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1301",
+   "line": "13xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "source"
+  },
+  {
+   "id": "CV1125",
+   "line": "11xx",
+   "length_m": 1.3271,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1124",
+   "line": "11xx",
+   "length_m": 1.0891,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1123",
+   "line": "11xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1122",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1121",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1120",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1119",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1118",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1117",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1116",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1115",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1114",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1113",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1112",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1111",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1110",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1109",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1108",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1107",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1106",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1105",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1104",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1103",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1102",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1101",
+   "line": "11xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "source"
+  },
+  {
+   "id": "CV1225",
+   "line": "12xx",
+   "length_m": 1.3271,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1224",
+   "line": "12xx",
+   "length_m": 1.0899,
+   "kind": "curve",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1223",
+   "line": "12xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1222",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1221",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1220",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1219",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1218",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1217",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1216",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1215",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1214",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1213",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1212",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1211",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1210",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1209",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1208",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1207",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1206",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1205",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1204",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1203",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1202",
+   "line": "12xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1201",
+   "line": "12xx",
+   "length_m": 2.1441999999999997,
+   "kind": "straight",
+   "role": "source"
+  },
+  {
+   "id": "CV1601",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1602",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1603",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1604",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1605",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1607",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1606",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1608",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1609",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1610",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1611",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1612",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1615",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1616",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1617",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1618",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1619",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1622",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1623",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1624",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1625",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1626",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1629",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1630",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1631",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1632",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1633",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1636",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1637",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1638",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1639",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1640",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1643",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1644",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1645",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1646",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1647",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1650",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1651",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1652",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1653",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1654",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1614",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1613",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1621",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1620",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1628",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1627",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1635",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1634",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1642",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1641",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1649",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1648",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1656",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1655",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1657",
+   "line": "16xx",
+   "length_m": 2.3853,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1658",
+   "line": "16xx",
+   "length_m": 1.53,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1659",
+   "line": "16xx",
+   "length_m": 2.145,
+   "kind": "straight",
+   "role": "conveyor"
+  },
+  {
+   "id": "CV1660",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "transfer"
+  },
+  {
+   "id": "CV1661",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1663",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "sink"
+  },
+  {
+   "id": "CV1662",
+   "line": "16xx",
+   "length_m": 1.43,
+   "kind": "straight",
+   "role": "conveyor"
+  }
+ ],
+ "edges": [
+  {
+   "src": "CV1537",
+   "dst": "CV1501",
+   "type": "merge"
+  },
+  {
+   "src": "CV1536",
+   "dst": "CV1537",
+   "type": "inline"
+  },
+  {
+   "src": "CV1535",
+   "dst": "CV1536",
+   "type": "inline"
+  },
+  {
+   "src": "CV1534",
+   "dst": "CV1535",
+   "type": "inline"
+  },
+  {
+   "src": "CV1533",
+   "dst": "CV1534",
+   "type": "inline"
+  },
+  {
+   "src": "CV1532",
+   "dst": "CV1533",
+   "type": "inline"
+  },
+  {
+   "src": "CV1531",
+   "dst": "CV1532",
+   "type": "inline"
+  },
+  {
+   "src": "CV1531",
+   "dst": "CV1657",
+   "type": "divert"
+  },
+  {
+   "src": "CV1530",
+   "dst": "CV1531",
+   "type": "inline"
+  },
+  {
+   "src": "CV1529",
+   "dst": "CV1530",
+   "type": "inline"
+  },
+  {
+   "src": "CV1529",
+   "dst": "CV1650",
+   "type": "divert"
+  },
+  {
+   "src": "CV1528",
+   "dst": "CV1529",
+   "type": "inline"
+  },
+  {
+   "src": "CV1527",
+   "dst": "CV1528",
+   "type": "inline"
+  },
+  {
+   "src": "CV1527",
+   "dst": "CV1643",
+   "type": "divert"
+  },
+  {
+   "src": "CV1526",
+   "dst": "CV1527",
+   "type": "inline"
+  },
+  {
+   "src": "CV1525",
+   "dst": "CV1526",
+   "type": "inline"
+  },
+  {
+   "src": "CV1525",
+   "dst": "CV1636",
+   "type": "divert"
+  },
+  {
+   "src": "CV1524",
+   "dst": "CV1525",
+   "type": "inline"
+  },
+  {
+   "src": "CV1523",
+   "dst": "CV1524",
+   "type": "inline"
+  },
+  {
+   "src": "CV1523",
+   "dst": "CV1629",
+   "type": "divert"
+  },
+  {
+   "src": "CV1522",
+   "dst": "CV1523",
+   "type": "inline"
+  },
+  {
+   "src": "CV1521",
+   "dst": "CV1522",
+   "type": "inline"
+  },
+  {
+   "src": "CV1521",
+   "dst": "CV1622",
+   "type": "divert"
+  },
+  {
+   "src": "CV1520",
+   "dst": "CV1521",
+   "type": "inline"
+  },
+  {
+   "src": "CV1519",
+   "dst": "CV1520",
+   "type": "inline"
+  },
+  {
+   "src": "CV1519",
+   "dst": "CV1615",
+   "type": "divert"
+  },
+  {
+   "src": "CV1518",
+   "dst": "CV1519",
+   "type": "inline"
+  },
+  {
+   "src": "CV1517",
+   "dst": "CV1518",
+   "type": "inline"
+  },
+  {
+   "src": "CV1517",
+   "dst": "CV1608",
+   "type": "divert"
+  },
+  {
+   "src": "CV1516",
+   "dst": "CV1517",
+   "type": "inline"
+  },
+  {
+   "src": "CV1515",
+   "dst": "CV1516",
+   "type": "inline"
+  },
+  {
+   "src": "CV1515",
+   "dst": "CV1601",
+   "type": "divert"
+  },
+  {
+   "src": "CV1514",
+   "dst": "CV1515",
+   "type": "inline"
+  },
+  {
+   "src": "CV1513",
+   "dst": "CV1514",
+   "type": "inline"
+  },
+  {
+   "src": "CV1512",
+   "dst": "CV1513",
+   "type": "inline"
+  },
+  {
+   "src": "CV1511",
+   "dst": "CV1512",
+   "type": "inline"
+  },
+  {
+   "src": "CV1510",
+   "dst": "CV1511",
+   "type": "inline"
+  },
+  {
+   "src": "CV1509",
+   "dst": "CV1510",
+   "type": "inline"
+  },
+  {
+   "src": "CV1508",
+   "dst": "CV1509",
+   "type": "inline"
+  },
+  {
+   "src": "CV1507",
+   "dst": "CV1508",
+   "type": "inline"
+  },
+  {
+   "src": "CV1506",
+   "dst": "CV1507",
+   "type": "inline"
+  },
+  {
+   "src": "CV1505",
+   "dst": "CV1506",
+   "type": "inline"
+  },
+  {
+   "src": "CV1504",
+   "dst": "CV1505",
+   "type": "inline"
+  },
+  {
+   "src": "CV1503",
+   "dst": "CV1504",
+   "type": "inline"
+  },
+  {
+   "src": "CV1502",
+   "dst": "CV1503",
+   "type": "inline"
+  },
+  {
+   "src": "CV1501",
+   "dst": "CV1502",
+   "type": "inline"
+  },
+  {
+   "src": "CV1417",
+   "dst": "CV1501",
+   "type": "inline"
+  },
+  {
+   "src": "CV1416",
+   "dst": "CV1417",
+   "type": "inline"
+  },
+  {
+   "src": "CV1415",
+   "dst": "CV1416",
+   "type": "inline"
+  },
+  {
+   "src": "CV1414",
+   "dst": "CV1415",
+   "type": "inline"
+  },
+  {
+   "src": "CV1413",
+   "dst": "CV1414",
+   "type": "inline"
+  },
+  {
+   "src": "CV1412",
+   "dst": "CV1413",
+   "type": "inline"
+  },
+  {
+   "src": "CV1411",
+   "dst": "CV1412",
+   "type": "inline"
+  },
+  {
+   "src": "CV1410",
+   "dst": "CV1411",
+   "type": "inline"
+  },
+  {
+   "src": "CV1409",
+   "dst": "CV1410",
+   "type": "inline"
+  },
+  {
+   "src": "CV1408",
+   "dst": "CV1409",
+   "type": "inline"
+  },
+  {
+   "src": "CV1407",
+   "dst": "CV1408",
+   "type": "inline"
+  },
+  {
+   "src": "CV1406",
+   "dst": "CV1407",
+   "type": "inline"
+  },
+  {
+   "src": "CV1405",
+   "dst": "CV1406",
+   "type": "inline"
+  },
+  {
+   "src": "CV1404",
+   "dst": "CV1405",
+   "type": "inline"
+  },
+  {
+   "src": "CV1403",
+   "dst": "CV1404",
+   "type": "inline"
+  },
+  {
+   "src": "CV1402",
+   "dst": "CV1403",
+   "type": "inline"
+  },
+  {
+   "src": "CV1401",
+   "dst": "CV1402",
+   "type": "inline"
+  },
+  {
+   "src": "CV1324",
+   "dst": "CV1401",
+   "type": "inline"
+  },
+  {
+   "src": "CV1323",
+   "dst": "CV1324",
+   "type": "inline"
+  },
+  {
+   "src": "CV1322",
+   "dst": "CV1323",
+   "type": "inline"
+  },
+  {
+   "src": "CV1321",
+   "dst": "CV1322",
+   "type": "inline"
+  },
+  {
+   "src": "CV1320",
+   "dst": "CV1321",
+   "type": "inline"
+  },
+  {
+   "src": "CV1319",
+   "dst": "CV1320",
+   "type": "inline"
+  },
+  {
+   "src": "CV1318",
+   "dst": "CV1319",
+   "type": "inline"
+  },
+  {
+   "src": "CV1317",
+   "dst": "CV1318",
+   "type": "inline"
+  },
+  {
+   "src": "CV1316",
+   "dst": "CV1317",
+   "type": "inline"
+  },
+  {
+   "src": "CV1315",
+   "dst": "CV1316",
+   "type": "inline"
+  },
+  {
+   "src": "CV1314",
+   "dst": "CV1315",
+   "type": "inline"
+  },
+  {
+   "src": "CV1313",
+   "dst": "CV1314",
+   "type": "inline"
+  },
+  {
+   "src": "CV1312",
+   "dst": "CV1313",
+   "type": "inline"
+  },
+  {
+   "src": "CV1311",
+   "dst": "CV1312",
+   "type": "inline"
+  },
+  {
+   "src": "CV1310",
+   "dst": "CV1311",
+   "type": "inline"
+  },
+  {
+   "src": "CV1309",
+   "dst": "CV1310",
+   "type": "inline"
+  },
+  {
+   "src": "CV1308",
+   "dst": "CV1309",
+   "type": "inline"
+  },
+  {
+   "src": "CV1307",
+   "dst": "CV1308",
+   "type": "inline"
+  },
+  {
+   "src": "CV1306",
+   "dst": "CV1307",
+   "type": "inline"
+  },
+  {
+   "src": "CV1305",
+   "dst": "CV1306",
+   "type": "inline"
+  },
+  {
+   "src": "CV1304",
+   "dst": "CV1305",
+   "type": "inline"
+  },
+  {
+   "src": "CV1303",
+   "dst": "CV1304",
+   "type": "inline"
+  },
+  {
+   "src": "CV1302",
+   "dst": "CV1303",
+   "type": "inline"
+  },
+  {
+   "src": "CV1301",
+   "dst": "CV1302",
+   "type": "inline"
+  },
+  {
+   "src": "CV1125",
+   "dst": "CV1410",
+   "type": "merge"
+  },
+  {
+   "src": "CV1124",
+   "dst": "CV1125",
+   "type": "inline"
+  },
+  {
+   "src": "CV1123",
+   "dst": "CV1124",
+   "type": "inline"
+  },
+  {
+   "src": "CV1122",
+   "dst": "CV1123",
+   "type": "inline"
+  },
+  {
+   "src": "CV1121",
+   "dst": "CV1122",
+   "type": "inline"
+  },
+  {
+   "src": "CV1120",
+   "dst": "CV1121",
+   "type": "inline"
+  },
+  {
+   "src": "CV1119",
+   "dst": "CV1120",
+   "type": "inline"
+  },
+  {
+   "src": "CV1118",
+   "dst": "CV1119",
+   "type": "inline"
+  },
+  {
+   "src": "CV1117",
+   "dst": "CV1118",
+   "type": "inline"
+  },
+  {
+   "src": "CV1116",
+   "dst": "CV1117",
+   "type": "inline"
+  },
+  {
+   "src": "CV1115",
+   "dst": "CV1116",
+   "type": "inline"
+  },
+  {
+   "src": "CV1114",
+   "dst": "CV1115",
+   "type": "inline"
+  },
+  {
+   "src": "CV1113",
+   "dst": "CV1114",
+   "type": "inline"
+  },
+  {
+   "src": "CV1112",
+   "dst": "CV1113",
+   "type": "inline"
+  },
+  {
+   "src": "CV1111",
+   "dst": "CV1112",
+   "type": "inline"
+  },
+  {
+   "src": "CV1110",
+   "dst": "CV1111",
+   "type": "inline"
+  },
+  {
+   "src": "CV1109",
+   "dst": "CV1110",
+   "type": "inline"
+  },
+  {
+   "src": "CV1108",
+   "dst": "CV1109",
+   "type": "inline"
+  },
+  {
+   "src": "CV1107",
+   "dst": "CV1108",
+   "type": "inline"
+  },
+  {
+   "src": "CV1106",
+   "dst": "CV1107",
+   "type": "inline"
+  },
+  {
+   "src": "CV1105",
+   "dst": "CV1106",
+   "type": "inline"
+  },
+  {
+   "src": "CV1104",
+   "dst": "CV1105",
+   "type": "inline"
+  },
+  {
+   "src": "CV1103",
+   "dst": "CV1104",
+   "type": "inline"
+  },
+  {
+   "src": "CV1102",
+   "dst": "CV1103",
+   "type": "inline"
+  },
+  {
+   "src": "CV1101",
+   "dst": "CV1102",
+   "type": "inline"
+  },
+  {
+   "src": "CV1225",
+   "dst": "CV1405",
+   "type": "merge"
+  },
+  {
+   "src": "CV1224",
+   "dst": "CV1225",
+   "type": "inline"
+  },
+  {
+   "src": "CV1223",
+   "dst": "CV1224",
+   "type": "inline"
+  },
+  {
+   "src": "CV1222",
+   "dst": "CV1223",
+   "type": "inline"
+  },
+  {
+   "src": "CV1221",
+   "dst": "CV1222",
+   "type": "inline"
+  },
+  {
+   "src": "CV1220",
+   "dst": "CV1221",
+   "type": "inline"
+  },
+  {
+   "src": "CV1219",
+   "dst": "CV1220",
+   "type": "inline"
+  },
+  {
+   "src": "CV1218",
+   "dst": "CV1219",
+   "type": "inline"
+  },
+  {
+   "src": "CV1217",
+   "dst": "CV1218",
+   "type": "inline"
+  },
+  {
+   "src": "CV1216",
+   "dst": "CV1217",
+   "type": "inline"
+  },
+  {
+   "src": "CV1215",
+   "dst": "CV1216",
+   "type": "inline"
+  },
+  {
+   "src": "CV1214",
+   "dst": "CV1215",
+   "type": "inline"
+  },
+  {
+   "src": "CV1213",
+   "dst": "CV1214",
+   "type": "inline"
+  },
+  {
+   "src": "CV1212",
+   "dst": "CV1213",
+   "type": "inline"
+  },
+  {
+   "src": "CV1211",
+   "dst": "CV1212",
+   "type": "inline"
+  },
+  {
+   "src": "CV1210",
+   "dst": "CV1211",
+   "type": "inline"
+  },
+  {
+   "src": "CV1209",
+   "dst": "CV1210",
+   "type": "inline"
+  },
+  {
+   "src": "CV1208",
+   "dst": "CV1209",
+   "type": "inline"
+  },
+  {
+   "src": "CV1207",
+   "dst": "CV1208",
+   "type": "inline"
+  },
+  {
+   "src": "CV1206",
+   "dst": "CV1207",
+   "type": "inline"
+  },
+  {
+   "src": "CV1205",
+   "dst": "CV1206",
+   "type": "inline"
+  },
+  {
+   "src": "CV1204",
+   "dst": "CV1205",
+   "type": "inline"
+  },
+  {
+   "src": "CV1203",
+   "dst": "CV1204",
+   "type": "inline"
+  },
+  {
+   "src": "CV1202",
+   "dst": "CV1203",
+   "type": "inline"
+  },
+  {
+   "src": "CV1201",
+   "dst": "CV1202",
+   "type": "inline"
+  },
+  {
+   "src": "CV1601",
+   "dst": "CV1602",
+   "type": "inline"
+  },
+  {
+   "src": "CV1602",
+   "dst": "CV1603",
+   "type": "inline"
+  },
+  {
+   "src": "CV1603",
+   "dst": "CV1604",
+   "type": "inline"
+  },
+  {
+   "src": "CV1604",
+   "dst": "CV1605",
+   "type": "inline"
+  },
+  {
+   "src": "CV1604",
+   "dst": "CV1606",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1606",
+   "dst": "CV1607",
+   "type": "inline"
+  },
+  {
+   "src": "CV1608",
+   "dst": "CV1609",
+   "type": "inline"
+  },
+  {
+   "src": "CV1609",
+   "dst": "CV1610",
+   "type": "inline"
+  },
+  {
+   "src": "CV1610",
+   "dst": "CV1611",
+   "type": "inline"
+  },
+  {
+   "src": "CV1611",
+   "dst": "CV1612",
+   "type": "inline"
+  },
+  {
+   "src": "CV1611",
+   "dst": "CV1613",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1615",
+   "dst": "CV1616",
+   "type": "inline"
+  },
+  {
+   "src": "CV1616",
+   "dst": "CV1617",
+   "type": "inline"
+  },
+  {
+   "src": "CV1617",
+   "dst": "CV1618",
+   "type": "inline"
+  },
+  {
+   "src": "CV1618",
+   "dst": "CV1619",
+   "type": "inline"
+  },
+  {
+   "src": "CV1618",
+   "dst": "CV1620",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1622",
+   "dst": "CV1623",
+   "type": "inline"
+  },
+  {
+   "src": "CV1623",
+   "dst": "CV1624",
+   "type": "inline"
+  },
+  {
+   "src": "CV1624",
+   "dst": "CV1625",
+   "type": "inline"
+  },
+  {
+   "src": "CV1625",
+   "dst": "CV1626",
+   "type": "inline"
+  },
+  {
+   "src": "CV1625",
+   "dst": "CV1627",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1629",
+   "dst": "CV1630",
+   "type": "inline"
+  },
+  {
+   "src": "CV1630",
+   "dst": "CV1631",
+   "type": "inline"
+  },
+  {
+   "src": "CV1631",
+   "dst": "CV1632",
+   "type": "inline"
+  },
+  {
+   "src": "CV1632",
+   "dst": "CV1633",
+   "type": "inline"
+  },
+  {
+   "src": "CV1632",
+   "dst": "CV1634",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1636",
+   "dst": "CV1637",
+   "type": "inline"
+  },
+  {
+   "src": "CV1637",
+   "dst": "CV1638",
+   "type": "inline"
+  },
+  {
+   "src": "CV1638",
+   "dst": "CV1639",
+   "type": "inline"
+  },
+  {
+   "src": "CV1639",
+   "dst": "CV1640",
+   "type": "inline"
+  },
+  {
+   "src": "CV1639",
+   "dst": "CV1641",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1643",
+   "dst": "CV1644",
+   "type": "inline"
+  },
+  {
+   "src": "CV1644",
+   "dst": "CV1645",
+   "type": "inline"
+  },
+  {
+   "src": "CV1645",
+   "dst": "CV1646",
+   "type": "inline"
+  },
+  {
+   "src": "CV1646",
+   "dst": "CV1647",
+   "type": "inline"
+  },
+  {
+   "src": "CV1646",
+   "dst": "CV1648",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1650",
+   "dst": "CV1651",
+   "type": "inline"
+  },
+  {
+   "src": "CV1651",
+   "dst": "CV1652",
+   "type": "inline"
+  },
+  {
+   "src": "CV1652",
+   "dst": "CV1653",
+   "type": "inline"
+  },
+  {
+   "src": "CV1653",
+   "dst": "CV1654",
+   "type": "inline"
+  },
+  {
+   "src": "CV1653",
+   "dst": "CV1655",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1613",
+   "dst": "CV1614",
+   "type": "inline"
+  },
+  {
+   "src": "CV1620",
+   "dst": "CV1621",
+   "type": "inline"
+  },
+  {
+   "src": "CV1627",
+   "dst": "CV1628",
+   "type": "inline"
+  },
+  {
+   "src": "CV1634",
+   "dst": "CV1635",
+   "type": "inline"
+  },
+  {
+   "src": "CV1641",
+   "dst": "CV1642",
+   "type": "inline"
+  },
+  {
+   "src": "CV1648",
+   "dst": "CV1649",
+   "type": "inline"
+  },
+  {
+   "src": "CV1655",
+   "dst": "CV1656",
+   "type": "inline"
+  },
+  {
+   "src": "CV1657",
+   "dst": "CV1658",
+   "type": "inline"
+  },
+  {
+   "src": "CV1658",
+   "dst": "CV1659",
+   "type": "inline"
+  },
+  {
+   "src": "CV1659",
+   "dst": "CV1660",
+   "type": "inline"
+  },
+  {
+   "src": "CV1660",
+   "dst": "CV1661",
+   "type": "inline"
+  },
+  {
+   "src": "CV1660",
+   "dst": "CV1662",
+   "type": "side_transfer"
+  },
+  {
+   "src": "CV1662",
+   "dst": "CV1663",
+   "type": "inline"
+  }
+ ],
+ "sources": [
+  "CV1301",
+  "CV1101",
+  "CV1201"
+ ],
+ "sinks": [
+  "CV1605",
+  "CV1607",
+  "CV1612",
+  "CV1619",
+  "CV1626",
+  "CV1633",
+  "CV1640",
+  "CV1647",
+  "CV1654",
+  "CV1614",
+  "CV1621",
+  "CV1628",
+  "CV1635",
+  "CV1642",
+  "CV1649",
+  "CV1656",
+  "CV1661",
+  "CV1663"
+ ],
+ "crossings": [
+  {
+   "a": "CV1510",
+   "b": "CV1603",
+   "at_mm": [
+    143049.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1509",
+   "b": "CV1610",
+   "at_mm": [
+    141404.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1508",
+   "b": "CV1617",
+   "at_mm": [
+    139759.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1507",
+   "b": "CV1624",
+   "at_mm": [
+    138114.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1506",
+   "b": "CV1631",
+   "at_mm": [
+    136469.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1506",
+   "b": "CV1638",
+   "at_mm": [
+    134824.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1505",
+   "b": "CV1645",
+   "at_mm": [
+    133179.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1504",
+   "b": "CV1652",
+   "at_mm": [
+    131534.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  },
+  {
+   "a": "CV1503",
+   "b": "CV1659",
+   "at_mm": [
+    129579.4,
+    87455.1
+   ],
+   "type": "grade_separated"
+  }
+ ],
+ "checks": {
+  "unreachable_sinks": [],
+  "n_cycles": 1,
+  "cycle_lengths": [
+   37
+  ]
+ }
+}
